@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.0.5</version>
+		<relativePath/>
+	</parent>
+
+	<groupId>com.asefu</groupId>
+	<artifactId>shapetool</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>ShapeTool</name>
+	<description>SOAP Web Service - ShapeTool</description>
+
+	<properties>
+		<java.version>21</java.version> <!-- safer than 25 -->
+	</properties>
+
+	<!-- ========================= -->
+	<!-- DEPENDENCIES -->
+	<!-- ========================= -->
+	<dependencies>
+
+		<!-- Spring Boot Web Services (SOAP) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+
+		<!-- Optional (for REST if needed, but safe to keep) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- WSDL Support -->
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+			<version>1.6.3</version>
+		</dependency>
+
+		<!-- JAXB (Required for XSD → Java classes) -->
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+		</dependency>
+
+		<!-- TEST -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<!-- ========================= -->
+	<!-- BUILD -->
+	<!-- ========================= -->
+	<build>
+		<plugins>
+
+			<!-- Spring Boot -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- JAXB Plugin (VERY IMPORTANT) -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>3.1.0</version>
+
+				<executions>
+					<execution>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+
+				<configuration>
+					<!-- XSD LOCATION -->
+					<sources>
+						<source>src/main/resources/schemas/shapes.xsd</source>
+					</sources>
+
+					<!-- GENERATED JAVA FILES -->
+					<outputDirectory>
+						target/generated-sources/jaxb
+					</outputDirectory>
+
+					<clearOutputDir>true</clearOutputDir>
+				</configuration>
+
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>

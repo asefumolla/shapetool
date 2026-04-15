@@ -1,0 +1,153 @@
+<!--1. Circle Area-->
+<!-- Request-->
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:shp="http://example.com/shapetool">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <shp:circleAreaRequest>
+            <shp:radius>5</shp:radius>
+        </shp:circleAreaRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
+        <!-- Response-->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:shp="http://example.com/shapetool">
+<soapenv:Body>
+    <shp:circleAreaResponse>
+        <shp:area>78.53981633974483</shp:area>
+    </shp:circleAreaResponse>
+</soapenv:Body>
+</soapenv:Envelope>
+
+
+
+
+        <!--2. Square Area-->
+
+        <!-- Request-->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:shp="http://example.com/shapetool">
+<soapenv:Header/>
+<soapenv:Body>
+    <shp:squareAreaRequest>
+        <shp:side>4</shp:side>
+    </shp:squareAreaRequest>
+</soapenv:Body>
+</soapenv:Envelope>
+
+        <!-- Response-->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:shp="http://example.com/shapetool">
+<soapenv:Header/>
+<soapenv:Body>
+    <shp:squareAreaRequest>
+        <shp:side>4</shp:side>
+    </shp:squareAreaRequest>
+</soapenv:Body>
+</soapenv:Envelope>
+
+
+
+
+        <!--3. Rectangle Area-->
+
+        <!-- Request-->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:shp="http://example.com/shapetool">
+<soapenv:Header/>
+<soapenv:Body>
+    <shp:rectangleAreaRequest>
+        <shp:length>10</shp:length>
+        <shp:width>5</shp:width>
+    </shp:rectangleAreaRequest>
+</soapenv:Body>
+</soapenv:Envelope>
+
+        <!-- Response-->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:shp="http://example.com/shapetool">
+<soapenv:Body>
+    <shp:rectangleAreaResponse>
+        <shp:area>50</shp:area>
+    </shp:rectangleAreaResponse>
+</soapenv:Body>
+</soapenv:Envelope>
+
+
+
+
+        <!--4. Parallelogram Area-->
+
+        <!-- Request-->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:shp="http://example.com/shapetool">
+<soapenv:Header/>
+<soapenv:Body>
+    <shp:parallelogramAreaRequest>
+        <shp:base>6</shp:base>
+        <shp:height>3</shp:height>
+    </shp:parallelogramAreaRequest>
+</soapenv:Body>
+</soapenv:Envelope>
+
+        <!-- Response-->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:shp="http://example.com/shapetool">
+<soapenv:Body>
+    <shp:parallelogramAreaResponse>
+        <shp:area>18</shp:area>
+    </shp:parallelogramAreaResponse>
+</soapenv:Body>
+</soapenv:Envelope>
+
+
+
+        <!--5. Triangle Area-->
+
+        <!-- Request-->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:shp="http://example.com/shapetool">
+<soapenv:Header/>
+<soapenv:Body>
+    <shp:triangleAreaRequest>
+        <shp:base>8</shp:base>
+        <shp:height>4</shp:height>
+    </shp:triangleAreaRequest>
+</soapenv:Body>
+</soapenv:Envelope>
+
+        <!-- Response-->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:shp="http://example.com/shapetool">
+<soapenv:Body>
+    <shp:triangleAreaResponse>
+        <shp:area>16</shp:area>
+    </shp:triangleAreaResponse>
+</soapenv:Body>
+</soapenv:Envelope>
+
+
+
+        <!-- 6. SOAP Fault (Error Example)-->
+
+        <!-- Request (Invalid Input)-->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:shp="http://example.com/shapetool">
+<soapenv:Header/>
+<soapenv:Body>
+    <shp:circleAreaRequest>
+        <shp:radius>-5</shp:radius>
+    </shp:circleAreaRequest>
+</soapenv:Body>
+</soapenv:Envelope>
+
+        <!-- Response (Fault)-->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+<soapenv:Body>
+    <soap:Fault>
+        <faultcode>soap:Server</faultcode>
+        <faultstring>Radius must be greater than 0</faultstring>
+    </soap:Fault>
+</soapenv:Body>
+</soapenv:Envelope>
